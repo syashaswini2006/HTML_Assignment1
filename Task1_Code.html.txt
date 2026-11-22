@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase Card</title>
+
+    <style>
+        /* Box Model Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .product-card {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+            /* Mobile Layout */
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Product Image */
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #e2e8f0;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+
+            transition: transform 0.3s ease;
+        }
+
+        /* Image Zoom Effect */
+        .product-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #0284c7;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Product Details */
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .category-rating {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-size: 14px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .description {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        /* Price and Button */
+        .bottom-shelf {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .tax {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .add-button {
+            width: 100%;
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease,
+                        transform 0.2s ease;
+        }
+
+        .add-button:hover {
+            background-color: #0369a1;
+        }
+
+        /* Button Press Effect */
+        .add-button:active {
+            transform: scale(0.96);
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+
+            .product-card {
+                grid-template-columns: 1fr 1fr;
+                align-items: stretch;
+            }
+
+            .product-image img {
+                height: 100%;
+                min-height: 350px;
+            }
+
+            .bottom-shelf {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .add-button {
+                width: auto;
+                min-width: 130px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="product-card">
+
+        <!-- Product Image -->
+        <div class="product-image">
+
+            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85"
+                 alt="Desk Workspace Mat">
+
+            <span class="badge">POPULAR</span>
+
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+
+            <div>
+
+                <div class="category-rating">
+                    <span class="category">Category</span>
+                    <span class="rating">★ 4.9</span>
+                </div>
+
+                <h2 class="product-title">
+                    Desk Workspace Mat
+                </h2>
+
+                <p class="description">
+                    A stylish and comfortable workspace mat
+                    designed for your desk.
+                </p>
+
+                <!-- Features -->
+                <div class="features">
+                    <span class="feature">Premium Quality</span>
+                    <span class="feature">Water Resistant</span>
+                    <span class="feature">Easy to Clean</span>
+                </div>
+
+            </div>
+
+            <!-- Price and Button -->
+            <div class="bottom-shelf">
+
+                <div>
+                    <p class="price">₹1,499</p>
+                    <p class="tax">Tax included</p>
+                </div>
+
+                <button class="add-button">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

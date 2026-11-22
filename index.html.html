@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Assignment</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: lightblue;
+            padding: 15px;
+        }
+
+        h2 {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        pre {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid gray;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: 2px solid black;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>HTML and CSS Assignment</h1>
+
+<h2>Task 1 - HTML Code</h2>
+
+<pre id="code1">Loading Task 1 code...</pre>
+
+<h2>Task 1 - Output Webpage</h2>
+
+<iframe src="Task1_Output.html"></iframe>
+
+<h2>Task 2 - HTML Code</h2>
+
+<pre id="code2">Loading Task 2 code...</pre>
+
+<h2>Task 2 - Output Webpage</h2>
+
+<iframe src="Task2_Output.html"></iframe>
+
+<script>
+
+fetch("Task1_Code.html")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("code1").textContent = data;
+});
+
+fetch("Task2_Code.html")
+.then(response => response.text())
+.then(data => {
+    document.getElementById("code2").textContent = data;
+});
+
+</script>
+
+</body>
+</html>

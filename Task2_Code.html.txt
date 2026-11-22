@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Pricing Cards</title>
+
+    <style>
+
+        /* Box Model Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 20px;
+        }
+
+        /* Main Container */
+        .pricing-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        /* Heading */
+        .heading {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .heading h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #64748b;
+        }
+
+        /* Billing Toggle */
+        .billing-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .toggle-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #e2e8f0;
+            padding: 5px;
+            border-radius: 30px;
+        }
+
+        .toggle-pill button {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .toggle-pill button.active {
+            background-color: #0284c7;
+            color: white;
+        }
+
+        /* Pricing Grid - Mobile First */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background-color: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 15px;
+            padding: 25px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        /* Hover Effect */
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Popular Card */
+        .popular {
+            border: 2px solid #0284c7;
+            position: relative;
+            animation: glow 2s infinite alternate;
+        }
+
+        .popular-badge {
+            background-color: #0284c7;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Glow Animation */
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(2, 132, 199, 0.2);
+            }
+
+            to {
+                box-shadow: 0 0 18px rgba(2, 132, 199, 0.5);
+            }
+        }
+
+        /* Plan Details */
+        .plan-name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .plan-price span {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: normal;
+        }
+
+        .plan-description {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Features */
+        .features {
+            list-style: none;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: #0284c7;
+            font-weight: bold;
+        }
+
+        /* Select Button */
+        .select-button {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #0284c7;
+            border-radius: 8px;
+            background-color: white;
+            color: #0284c7;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease,
+                        color 0.3s ease;
+        }
+
+        .select-button:hover {
+            background-color: #0284c7;
+            color: white;
+        }
+
+        .popular .select-button {
+            background-color: #0284c7;
+            color: white;
+        }
+
+        .popular .select-button:hover {
+            background-color: #0369a1;
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 850px) {
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="pricing-container">
+
+        <!-- Heading -->
+        <div class="heading">
+            <h1>Choose Your Plan</h1>
+            <p>Select the best plan for your needs</p>
+        </div>
+
+        <!-- Billing Toggle -->
+        <div class="billing-toggle">
+
+            <div class="toggle-pill">
+
+                <button class="active"
+                        onclick="changeBilling('monthly', this)">
+                    Monthly
+                </button>
+
+                <button onclick="changeBilling('annual', this)">
+                    Annual
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+
+            <!-- Starter Plan -->
+            <div class="pricing-card">
+
+                <div>
+
+                    <h2 class="plan-name">
+                        Starter
+                    </h2>
+
+                    <p class="plan-price"
+                       data-monthly="Free"
+                       data-annual="Free">
+                        Free
+                    </p>
+
+                    <p class="plan-description">
+                        Perfect for beginners.
+                    </p>
+
+                    <ul class="features">
+                        <li>Basic features</li>
+                        <li>5 projects</li>
+                        <li>Email support</li>
+                    </ul>
+
+                </div>
+
+                <button class="select-button">
+                    Select
+                </button>
+
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card popular">
+
+                <div>
+
+                    <span class="popular-badge">
+                        POPULAR
+                    </span>
+
+                    <h2 class="plan-name">
+                        Pro Plan
+                    </h2>
+
+                    <p class="plan-price"
+                       data-monthly="₹799"
+                       data-annual="₹7,999">
+                        ₹799 <span>/mo</span>
+                    </p>
+
+                    <p class="plan-description">
+                        Best for professionals.
+                    </p>
+
+                    <ul class="features">
+                        <li>Unlimited projects</li>
+                        <li>Advanced features</li>
+                        <li>Priority support</li>
+                    </ul>
+
+                </div>
+
+                <button class="select-button">
+                    Select Pro
+                </button>
+
+            </div>
+
+            <!-- Team Plan -->
+            <div class="pricing-card">
+
+                <div>
+
+                    <h2 class="plan-name">
+                        Team
+                    </h2>
+
+                    <p class="plan-price"
+                       data-monthly="₹1,999"
+                       data-annual="₹19,999">
+                        ₹1,999 <span>/mo</span>
+                    </p>
+
+                    <p class="plan-description">
+                        Ideal for teams and businesses.
+                    </p>
+
+                    <ul class="features">
+                        <li>Team collaboration</li>
+                        <li>Unlimited projects</li>
+                        <li>Dedicated support</li>
+                    </ul>
+
+                </div>
+
+                <button class="select-button">
+                    Select
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JavaScript for Billing Toggle -->
+    <script>
+
+        function changeBilling(type, button) {
+
+            // Update toggle button
+            document.querySelectorAll(".toggle-pill button")
+                .forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+            button.classList.add("active");
+
+            // Update prices
+            document.querySelectorAll(".plan-price")
+                .forEach(price => {
+
+                    if (type === "monthly") {
+
+                        let value = price.dataset.monthly;
+
+                        if (value === "Free") {
+                            price.textContent = "Free";
+                        } else {
+                            price.innerHTML =
+                                value + " <span>/mo</span>";
+                        }
+
+                    } else {
+
+                        let value = price.dataset.annual;
+
+                        if (value === "Free") {
+                            price.textContent = "Free";
+                        } else {
+                            price.innerHTML =
+                                value + " <span>/year</span>";
+                        }
+
+                    }
+
+                });
+
+        }
+
+    </script>
+
+</body>
+</html>
